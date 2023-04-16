@@ -43,6 +43,7 @@ namespace capaPresentacion
                 return;
             }
             cNCliente.CrearCliente(cECliente);
+            cargar_datos();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -51,6 +52,11 @@ namespace capaPresentacion
         }
 
         private void frClientes_Load(object sender, EventArgs e)
+        {
+            cargar_datos();
+        }
+
+        private void cargar_datos()
         {
             gridDatos.DataSource = cNCliente.ObterDatos().Tables["tbl"];
         }

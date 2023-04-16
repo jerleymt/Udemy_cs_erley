@@ -39,15 +39,22 @@ namespace capaNegocio
         {
             cDCliente.PruebaConexion();
         }
-
+        //Este método crea el cliente a partir del método crear de la clase capa datos
+        //resive como argumento un cliente
         public void CrearCliente(CECliente cE)
         {
             cDCliente.Crear(cE);
         }
 
+        //Este método obtiene la base de datos de del método en la clase capa datos
+        //retorna lo que hay en la base de datos
         public DataSet ObterDatos( )
         {
             return cDCliente.Listar( );
+        }
+        public DataSet Actualizar_datos(CECliente cECliente)
+        {
+            return cDCliente.Actualizar();
         }
     }
 }
