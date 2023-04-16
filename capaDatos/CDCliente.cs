@@ -8,7 +8,7 @@ namespace capaDatos
     public class CDCliente
     {
         //string CsdenaConexcion = "Server=localhost;User=root;Password=123456;Port=3306;database=curso_cs";
-        string CsdenaConexcion = "Server=localhost;User=root;Password=;Port=4306;database=curso";
+        string CsdenaConexcion = "Server=localhost;User=root;Password=;Port=4306;database=cursos";
         public void PruebaConexion()
         {
             MySqlConnection mySqlconexion = new MySqlConnection(CsdenaConexcion);
