@@ -56,5 +56,9 @@ namespace capaNegocio
         {
             cDCliente.Editar(cE);
         }
+        public void Borrar_datos(CECliente cE)
+        {
+            cDCliente.Borrar(cE);
+        }
     }
 }

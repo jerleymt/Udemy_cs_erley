@@ -6,12 +6,20 @@ namespace capaPresentacion
     public partial class frClientes : Form
     {
         CNCliente cNCliente = new CNCliente();
+        CECliente cECliente = new CECliente();
+        private DialogResult mensaje_yes_not;
+
         public frClientes()
         {
             InitializeComponent();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        private void Limpiar()
         {
             txtId.Value = 0;
             txtNombre.Text = string.Empty;
@@ -30,7 +38,7 @@ namespace capaPresentacion
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
             bool resultado;
-            CECliente cECliente = new CECliente();
+            
             cECliente.Id = (int)txtId.Value;
             cECliente.Nombre = txtNombre.Text;
             cECliente.Apellido = txtApellido.Text;
@@ -53,11 +61,22 @@ namespace capaPresentacion
                 cNCliente.Editar_datos(cECliente);
             }
             cargar_datos();
+            Limpiar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            cNCliente.pruebaMySql();
+            if (txtId.Value == 0) return;
+
+            mensaje_yes_not = MessageBox.Show("Desea eliminar Cliente", "Aviso importante", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (mensaje_yes_not == DialogResult.Yes)
+            {
+                cECliente.Id = (int)txtId.Value;
+                cNCliente.Borrar_datos(cECliente);
+            }
+            cargar_datos();
+            Limpiar();
         }
 
         private void frClientes_Load(object sender, EventArgs e)

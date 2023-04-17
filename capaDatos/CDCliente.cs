@@ -11,6 +11,7 @@ namespace capaDatos
         string CsdenaConexcion = "Server=localhost;User=root;Password=;Port=4306;database=cursos";
         //Verifica que la base de datos se abra y en caso de que no lo haga mande un aviso de error
         //esto se hace para que no se cierre el programa
+        //Solo es para prueba
         public void PruebaConexion()
         {
             //Se crea una conexión a la base de datos
@@ -96,6 +97,25 @@ namespace capaDatos
             mySqlconexion.Close();
             //Este mensaje se muestra cuando esto sale bien
             MessageBox.Show("La base de datos se ha actualizado");
+        }
+
+        public void Borrar(CECliente cE)
+        {
+            //Se crea una conexión a la base de datos
+            MySqlConnection mySqlconexion = new MySqlConnection(CsdenaConexcion);
+            //Se inicia la conexión a la base de datos
+            mySqlconexion.Open();
+            //pregunta que se realiza a la base de datos
+            //Aquí se le esta pidiendo que actualice todo lo que hay en las celdas seleccionados
+            string Query = "DELETE FROM `cliente` WHERE  `id`="+cE.Id+";";
+            MySqlCommand mySqlCommand = new MySqlCommand(Query, mySqlconexion);
+            //Aquí le estamos dando la orden de que el comando que se ingreso por medio del query
+            //se ejecute en la base datos
+            mySqlCommand.ExecuteNonQuery();
+            //Se cierra la conexión a la base de datos
+            mySqlconexion.Close();
+            //Este mensaje se muestra cuando esto sale bien
+            MessageBox.Show("Se ha eliminado una fila");
         }
 
 
