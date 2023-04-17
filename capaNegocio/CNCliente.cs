@@ -52,9 +52,9 @@ namespace capaNegocio
         {
             return cDCliente.Listar( );
         }
-        public DataSet Actualizar_datos(CECliente cECliente)
+        public void Editar_datos(CECliente cE)
         {
-            return cDCliente.Actualizar();
+            cDCliente.Editar(cE);
         }
     }
 }

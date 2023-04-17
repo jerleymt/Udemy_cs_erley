@@ -42,7 +42,16 @@ namespace capaPresentacion
             {
                 return;
             }
-            cNCliente.CrearCliente(cECliente);
+
+            if (cECliente.Id == 0)
+            {
+                cNCliente.CrearCliente(cECliente);
+            }
+
+            else
+            {
+                cNCliente.Editar_datos(cECliente);
+            }
             cargar_datos();
         }
 
@@ -58,7 +67,18 @@ namespace capaPresentacion
 
         private void cargar_datos()
         {
+            //Los datos de la tabla será igual a lo que se obtenga de la base de datos
             gridDatos.DataSource = cNCliente.ObterDatos().Tables["tbl"];
+        }
+
+        private void gridDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Nuestro elemento de la tabla = al valor de la fila actual y la columna entre comillas
+            txtId.Value = (int)gridDatos.CurrentRow.Cells["Id"].Value;
+            txtNombre.Text = gridDatos.CurrentRow.Cells["Nombre"].Value.ToString();
+            txtApellido.Text = gridDatos.CurrentRow.Cells["Apellido"].Value.ToString();
+            //Aquí se pasa como argumento  la fila actual y la columna entre comillas
+            picFoto.Load(gridDatos.CurrentRow.Cells["Foto"].Value.ToString());
         }
     }
 }

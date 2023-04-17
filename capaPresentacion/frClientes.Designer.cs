@@ -99,6 +99,7 @@
             // 
             // txtId
             // 
+            txtId.Enabled = false;
             txtId.Location = new Point(140, 214);
             txtId.Name = "txtId";
             txtId.Size = new Size(75, 23);
@@ -165,14 +166,15 @@
             gridDatos.Location = new Point(289, 27);
             gridDatos.Name = "gridDatos";
             gridDatos.RowTemplate.Height = 25;
-            gridDatos.Size = new Size(533, 285);
+            gridDatos.Size = new Size(646, 285);
             gridDatos.TabIndex = 6;
+            gridDatos.CellDoubleClick += gridDatos_CellDoubleClick;
             // 
             // frClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(863, 346);
+            ClientSize = new Size(947, 346);
             Controls.Add(gridDatos);
             Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
